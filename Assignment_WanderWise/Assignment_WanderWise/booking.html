@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WanderWise - Bookings</title>
+
+    <link rel="stylesheet" href="booking.css">
+
+    <script>
+        function saveBooking() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var destination = document.getElementById("destination").value;
+            var departure = document.getElementById("departure").value;
+            var returnDate = document.getElementById("return").value;
+
+            var bookingData = {
+                name: name,
+                email: email,
+                destination: destination,
+                departure: departure,
+                returnDate: returnDate
+            };
+
+            // Save the booking data in local storage
+            localStorage.setItem("booking", JSON.stringify(bookingData));
+
+            // Display a confirmation message
+            var confirmationMessage = "Thank you, " + name + "! Your booking for " + destination + " from " + departure + " to " + returnDate + " has been saved.";
+            document.getElementById("confirmation").textContent = confirmationMessage;
+        }
+    </script>
+</head>
+<body>
+    <h1>Bookings</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" required>
+
+        <label for="departure">Departure Date:</label>
+        <input type="date" id="departure" name="departure" required>
+
+        <label for="return">Return Date:</label>
+        <input type="date" id="return" name="return" required>
+
+        <button type="button" onclick="saveBooking()">Submit Booking</button>
+    </form>
+
+    <p id="confirmation"></p>
+</body>
+</html>
